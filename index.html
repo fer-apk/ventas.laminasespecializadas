@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Láminas Especializadas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Top Bar Roja */
+        .top-bar {
+            background-color: #b71c1c;
+            color: white;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .top-bar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-left {
+            font-weight: 500;
+        }
+
+        .top-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #6b6b6b;
+            padding: 15px 0;
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #b71c1c;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23333" width="1200" height="600"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-logo {
+            margin-bottom: 30px;
+        }
+
+        .hero-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .hero-logo-circle {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 40px;
+            color: #333;
+        }
+
+        .hero-logo-text {
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-logo-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .hero-whatsapp {
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 0;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .hero-btn {
+            padding: 15px 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .btn-llamar {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background-color: #4a5568;
+            color: white;
+        }
+
+        .btn-correo {
+            background-color: #1a252f;
+            color: white;
+        }
+
+        .hero-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .navbar-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-logo-text {
+                font-size: 32px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .hero-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-left">
+                Cotiza tu proyecto:
+            </div>
+            <div class="top-bar-right">
+                <span>WhatsApp: 33 1808 8119</span>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <div class="logo-circle">LE</div>
+                <div class="logo-text">Láminas<br>Especializadas</div>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">INICIO</a></li>
+                <li><a href="#servicios">SERVICIOS</a></li>
+                <li><a href="#productos">PRODUCTOS</a></li>
+                <li><a href="#sucursales">SUCURSALES</a></li>
+                <li><a href="#contacto">CONTACTO</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <div class="hero-logo-container">
+                    <div class="hero-logo-circle">LE</div>
+                    <div class="hero-logo-text">LÁMINAS<br>ESPECIALIZADAS</div>
+                </div>
+            </div>
+            
+            <h1>Excelencia y variedad en las mejores marcas</h1>
+            
+            <div class="hero-whatsapp">
+                Whatsapp: 33 1808 8119
+            </div>
+            
+            <div class="hero-buttons">
+                <button class="hero-btn btn-llamar">LLAMAR</button>
+                <button class="hero-btn btn-whatsapp">WHATSAPP</button>
+                <button class="hero-btn btn-correo">CORREO</button>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 2da seccion nuestros provedores -->
+  <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="section-title">
+                <div class="section-subtitle">NUESTROS PROVEEDORES</div>
+                <h2 class="section-heading">CALIDAD Y DIVERSIDAD DE MARCAS</h2>
+            </div>
+
+            <div class="carousel-wrapper">
+                <button class="carousel-button prev" onclick="moveCarousel(-1)">&#8249;</button>
+                
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <div class="logo-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Owens_Corning_logo.svg/320px-Owens_Corning_logo.svg.png" alt="Owens Corning">
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="logo-container">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Ctext x='50%25' y='50%25' font-size='24' font-weight='bold' fill='%2366bb6a' text-anchor='middle' dominant-baseline='middle'%3ENOVAPLASTIK%3C/text%3E%3C/svg%3E" alt="Novaplastik">
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="logo-container">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Ctext x='50%25' y='50%25' font-size='32' font-weight='bold' fill='%23e53935' text-anchor='middle' dominant-baseline='middle'%3EOnduline%3C/text%3E%3C/svg%3E" alt="Onduline">
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="logo-container">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Owens_Corning_logo.svg/320px-Owens_Corning_logo.svg.png" alt="Owens Corning">
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="logo-container">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Ctext x='50%25' y='50%25' font-size='24' font-weight='bold' fill='%2366bb6a' text-anchor='middle' dominant-baseline='middle'%3ENOVAPLASTIK%3C/text%3E%3C/svg%3E" alt="Novaplastik">
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="logo-container">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Ctext x='50%25' y='50%25' font-size='32' font-weight='bold' fill='%23e53935' text-anchor='middle' dominant-baseline='middle'%3EOnduline%3C/text%3E%3C/svg%3E" alt="Onduline">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-button next" onclick="moveCarousel(1)">&#8250;</button>
+            </div>
+
+            <div class="carousel-indicators" id="indicators"></div>
+        </div>
+    </section>
+
+    
+    <style>
+
+        .carousel-section {
+            padding: 80px 20px;
+            background: linear-gradient(to bottom, #e8e8e8, #d8d8d8);
+        }
+
+        .carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #c44444;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .section-heading {
+            font-size: 42px;
+            font-weight: 300;
+            color: #333;
+            letter-spacing: 2px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            padding: 0 60px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 33.333%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .logo-container img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #333;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-button:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .carousel-button.prev {
+            left: 0;
+        }
+
+        .carousel-button.next {
+            right: 0;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #c44444;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-slide {
+                min-width: 100%;
+            }
+
+            .section-heading {
+                font-size: 28px;
+            }
+
+            .carousel-wrapper {
+                padding: 0 50px;
+            }
+
+            .carousel-button {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+    </style>
+
+
+<script>
+        const track = document.getElementById('carouselTrack');
+        const indicators = document.getElementById('indicators');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        const slidesPerView = window.innerWidth <= 768 ? 1 : 3;
+        const totalPages = Math.ceil(totalSlides / slidesPerView);
+        
+        let currentIndex = 0;
+        let autoplayInterval;
+
+        // Crear indicadores
+        for (let i = 0; i < totalPages; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator';
+            if (i === 0) indicator.classList.add('active');
+            indicator.onclick = () => goToSlide(i);
+            indicators.appendChild(indicator);
+        }
+
+        function updateCarousel() {
+            const offset = -(currentIndex * (100 / slidesPerView));
+            track.style.transform = `translateX(${offset}%)`;
+            
+            // Actualizar indicadores
+            document.querySelectorAll('.indicator').forEach((ind, idx) => {
+                ind.classList.toggle('active', idx === currentIndex);
+            });
+        }
+
+        function moveCarousel(direction) {
+            currentIndex += direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = totalPages - 1;
+            } else if (currentIndex >= totalPages) {
+                currentIndex = 0;
+            }
+            
+            updateCarousel();
+            resetAutoplay();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateCarousel();
+            resetAutoplay();
+        }
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                moveCarousel(1);
+            }, 4000);
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayInterval);
+            startAutoplay();
+        }
+
+        // Iniciar autoplay
+        startAutoplay();
+
+        // Pausar en hover
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
+        carouselWrapper.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+
+        carouselWrapper.addEventListener('mouseleave', () => {
+            startAutoplay();
+        });
+
+        // Ajustar en resize
+        window.addEventListener('resize', () => {
+            location.reload();
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 3ra seccion   los 3 banners de servicios-->
+     <section class="services-section">
+        <div class="services-container">
+            <div class="service-card envios">
+                <div class="service-content">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M18 18.5a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5m1.5-9l1.96 2.5H17V9.5m-11 9A1.5 1.5 0 0 1 4.5 17A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 17A1.5 1.5 0 0 1 6 18.5M20 8h-3V4H3c-1.11 0-2 .89-2 2v11h2a3 3 0 0 0 3 3a3 3 0 0 0 3-3h6a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2v-5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">ENVÍOS</h3>
+                    <p class="service-description">
+                        Conoce como puedes generar tus compras con los envíos incluidos. Aplican restricciones.
+                    </p>
+                    <button class="service-button">MÁS INFORMACIÓN</button>
+                </div>
+            </div>
+
+            <div class="service-card costos">
+                <div class="service-content">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+                            <rect x="2" y="5" width="20" height="14" rx="2" stroke="white" stroke-width="2"/>
+                            <text x="6" y="15" font-size="12" fill="white" font-weight="bold">$</text>
+                            <line x1="12" y1="9" x2="18" y2="9" stroke="white" stroke-width="2"/>
+                            <line x1="12" y1="13" x2="18" y2="13" stroke="white" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">COSTOS AL MAYOREO</h3>
+                    <p class="service-description">
+                        Cotiza con precios especiales para tus proyectos a gran escala
+                    </p>
+                    <button class="service-button">MÁS INFORMACIÓN</button>
+                </div>
+            </div>
+
+            <div class="service-card proyectos">
+                <div class="service-content">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M16 17v2H2v-2s0-4 7-4 7 4 7 4m-3.5-9.5A3.5 3.5 0 1 0 9 11a3.5 3.5 0 0 0 3.5-3.5m3.44 5.5A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4M15 4a3.39 3.39 0 0 0-1.93.59a5 5 0 0 1 0 5.82A3.39 3.39 0 0 0 15 11a3.5 3.5 0 0 0 0-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">PROYECTOS PERSONALIZADOS</h3>
+                    <p class="service-description">
+                        La mejor asesoría y servicio especializado para las necesidades y alcances de tu proyecto.
+                    </p>
+                    <button class="service-button">MÁS INFORMACIÓN</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<style >
+    .services-section {
+            width: 100%;
+            background-color: #f5f5f5;
+            padding: 60px 20px;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            position: relative;
+            min-height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.03) 10px,
+                rgba(255, 255, 255, 0.03) 20px
+            );
+            z-index: 1;
+        }
+
+        .service-card.envios {
+            background-color: #404040;
+        }
+
+        .service-card.costos {
+            background-color: #8B4513;
+        }
+
+        .service-card.proyectos {
+            background-color: #2c2c2c;
+        }
+
+        .service-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #dc2626;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .service-icon svg {
+            width: 60px;
+            height: 60px;
+            fill: white;
+        }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .service-description {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            max-width: 300px;
+        }
+
+        .service-button {
+            background-color: white;
+            color: #333;
+            font-weight: bold;
+            padding: 15px 35px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            letter-spacing: 0.5px;
+            font-size: 14px;
+        }
+
+        .service-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        @media (max-width: 768px) {
+            .services-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 4ta seccion    productos y servicios  -->
+    <section>
+<h1 class="page-title">PRODUCTOS Y SERVICIOS</h1>
+
+    <div class="products-grid">
+        <!-- Card 1: Metálicos -->
+        <div class="product-card">
+            <img src="metalicos-bg.jpg" alt="Metálicos" class="product-bg">
+            <div class="product-content">
+                <h2 class="product-title">METÁLICOS</h2>
+                <div class="red-line"></div>
+                <ul class="product-list">
+                    <li>KR-18</li>
+                    <li>KR-24</li>
+                    <li>R-101</li>
+                    <li>R-72</li>
+                    <li>R-90</li>
+                    <li>O-100</li>
+                    <li>Losacero</li>
+                    <li>RD-91.5</li>
+                    <li>PN-100/35</li>
+                    <li>R-66</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 2: Techos (Red Background) -->
+        <div class="product-card red-bg">
+            <div class="product-content">
+                <h2 class="product-title">TECHOS</h2>
+                <div class="red-line"></div>
+                <ul class="product-list">
+                    <li>Galvatecho</li>
+                    <li>Multytecho</li>
+                    <li>Multymuro</li>
+                    <li>Econotecho</li>
+                    <li>Economuro</li>
+                    <li>Isocindu</li>
+                    <li>Kingspan</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 3: Paneles -->
+        <div class="product-card dark-bg">
+            <div class="product-content">
+                <h2 class="product-title">PANELES</h2>
+                <div class="red-line"></div>
+                <p class="product-description">
+                    Compuestas por 2 caras de lámina Pintro (pintura poliéster) y por un núcleo de espuma de poliuretano. Perfectos para muro y mejorar la sensación térmica y acústica de tus espacios.
+                </p>
+            </div>
+        </div>
+
+        <!-- Card 4: Laminados Plásticos -->
+        <div class="product-card">
+            <img src="laminados-bg.jpg" alt="Laminados Plásticos" class="product-bg">
+            <div class="product-content">
+                <h2 class="product-title">LAMINADOS PLÁSTICOS</h2>
+                <div class="red-line"></div>
+                <ul class="product-list">
+                    <li>Policarbonato</li>
+                    <li>Acanalado PVC</li>
+                    <li>Teja PVC</li>
+                    <li>Translúcido Acrylít</li>
+                    <li>Translúcido Cubrelit</li>
+                    <li>Translúcido Luxon</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 5: Accesorios -->
+        <div class="product-card red-bg">
+            <div class="product-content">
+                <h2 class="product-title">ACCESORIOS</h2>
+                <div class="red-line"></div>
+                <ul class="product-list">
+                    <li>Tornillos autoperforantes</li>
+                    <li>Canaletas pluviales</li>
+                    <li>Remates y esquineros</li>
+                    <li>Selladores</li>
+                    <li>Ganchos y soportes</li>
+                    <li>Aislantes térmicos</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Card 6: Servicios -->
+        <div class="product-card darker-bg">
+            <div class="product-content">
+                <h2 class="product-title">SERVICIOS</h2>
+                <div class="red-line"></div>
+                <p class="product-description">
+                    Ofrecemos servicios de instalación profesional, asesoría técnica especializada, diseño de proyectos personalizados y mantenimiento preventivo. Nuestro equipo de expertos está comprometido con la calidad y satisfacción del cliente.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    </section>
+
+
+    <style>
+
+   .page-title {
+            text-align: center;
+            padding: 60px 20px;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 100%;
+        }
+
+        .product-card {
+            position: relative;
+            min-height: 500px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .product-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .product-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px;
+            max-width: 600px;
+        }
+
+        .product-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .red-line {
+            width: 50px;
+            height: 3px;
+            background-color: #e63946;
+            margin-bottom: 30px;
+        }
+
+        .product-list {
+            list-style: none;
+        }
+
+        .product-list li {
+            padding: 8px 0;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .product-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #ffffff;
+        }
+
+        .product-description {
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Estilo específico para tarjetas con fondo de color */
+        .red-bg {
+            background-color: #c1272d;
+        }
+
+        .dark-bg {
+            background-color: #2a2a2a;
+        }
+
+        .darker-bg {
+            background-color: #1f1f1f;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-content {
+                padding: 40px;
+            }
+
+            .product-title {
+                font-size: 2rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-content {
+                padding: 30px;
+            }
+
+            .product-title {
+                font-size: 1.5rem;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+                padding: 40px 20px;
+            }
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 5ta seccion    sucursales  -->
+    <section>
+<section class="sucursales">
+    <h2>Realizamos envíos a toda la republica</h2>
+    <p class="sucursales-subtitle" style="color: #1a1a1a;">Visítanos en cualquiera de nuestras ubicaciones en Jalisco y Colima</p>
+    
+    <div class="sucursales-container">
+      <!-- Pestañas de navegación -->
+      <div class="sucursales-tabs">
+        <button class="tab-btn active" style="background-color: #1B5A9B; color: #1a1a1a; border: 1px solid #BD3768; padding: 10px 20px; font-weight: 600;" data-tab="panel-periferico">Panel Periférico</button>
+        <button class="tab-btn" style="background-color: #1B5A9B; color: #1a1a1a; border: 1px solid #BD3768; padding: 10px 20px; font-weight: 600;" data-tab="periferico">Periférico</button>
+        <button class="tab-btn" style="background-color: #1B5A9B; color: #1a1a1a; border: 1px solid #BD3768; padding: 10px 20px; font-weight: 600;" data-tab="colima">Colima</button>
+      </div>
+      
+      <!-- Contenido de las pestañas -->
+      <div class="sucursales-content">
+        <!-- Sucursal Panel Periférico -->
+        <div class="tab-content active" id="panel-periferico">
+          <div class="sucursal-info">
+            <h3>SUCURSAL PANEL PERIFÉRICO</h3>
+            <p><i class="fas fa-map-marker-alt" style="color: #1B5A9B;"></i> Av. Periférico Pte. Manuel Gómez Morin 2880<br>Paraísos del Colli CP. 45069 Zapopan, Jal.</p>
+            <p><i class="fas fa-phone" style="color: #1B5A9B;"></i> <a href="tel:523314100050">52 33 1410 0050</a></p>
+            <p><i class="fas fa-envelope" style="color: #1B5A9B;"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
+            <a href="https://www.google.com/maps/place/Av+Perif%C3%A9rico+Pte+Manuel+G%C3%B3mez+Morin+2880,+Para%C3%ADsos+del+Colli,+45069+Zapopan,+Jal.,+M%C3%A9xico/@20.6907,-103.4185,17z/data=!3m1!4b1!4m5!3m4!1s0x8428ae4a6f0f2f1f:0x1c9f1c9f1c9f1c9f!8m2!3d20.6907!4d-103.4185" target="_blank" class="ver-mapa" style="color: #1B5A9B;">
+              <i class="fas fa-map-marked-alt" style="color: #1B5A9B;"></i> Ver en mapa
+            </a>
+          </div>
+          <div class="sucursal-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.6544!2d-103.4208!3d20.6907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ae4a6f0f2f1f%3A0x1c9f1c9f1c9f1c9f!2sAv%20Perif%C3%A9rico%20Pte%20Manuel%20G%C3%B3mez%20Morin%202880%2C%20Para%C3%ADsos%20del%20Colli%2C%2045069%20Zapopan%2C%20Jal.!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;"color="#8AD949" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Sucursal Panel Periférico"></iframe>
+          </div>
+        </div>
+        
+        <!-- Sucursal Periférico -->
+        <div class="tab-content" id="periferico">
+          <div class="sucursal-info">
+            <h3>SUCURSAL PERIFÉRICO</h3>
+            <p><i class="fas fa-map-marker-alt" style="color: #1B5A9B;"></i> Av. Perif. Pte. Manuel Gómez Morin 2790-D<br>Paraísos del Colli CP. 45069 Zapopan, Jal.</p>
+            <p><i class="fas fa-phone" style="color: #1B5A9B;"></i> <a href="tel:523314100050">52 33 1410 0050</a></p>
+            <p><i class="fas fa-envelope" style="color: #1B5A9B;"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
+            <a href="https://www.google.com/maps/place/Av+Perif%C3%A9rico+Pte+Manuel+G%C3%B3mez+Morin+2790-D,+Para%C3%ADsos+del+Colli,+45069+Zapopan,+Jal.,+M%C3%A9xico/@20.6910,-103.4200,17z/data=!3m1!4b1!4m5!3m4!1s0x8428ae4a6f0f2f1f:0x1c9f1c9f1c9f1c9f!8m2!3d20.6910!4d-103.4200" target="_blank" class="ver-mapa" style="color: #1B5A9B;">
+              <i class="fas fa-map-marked-alt" style="color: #1B5A9B;"></i> Ver en mapa
+            </a>
+          </div>
+          <div class="sucursal-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.6544!2d-103.4208!3d20.6910!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428ae4a6f0f2f1f%3A0x1c9f1c9f1c9f1c9f!2sAv%20Perif%C3%A9rico%20Pte%20Manuel%20G%C3%B3mez%20Morin%202790-D%2C%20Para%C3%ADsos%20del%20Colli%2C%2045069%20Zapopan%2C%20Jal.!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;"color="#1B5A9B" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Sucursal Periférico"></iframe>
+          </div>
+        </div>
+        
+        <!-- Sucursal Juan Gil Preciado -->
+        <div class="tab-content" id="juan-gil">
+          <div class="sucursal-info">
+            <h3>SUCURSAL JUAN GIL PRECIADO</h3>
+            <p><i class="fas fa-map-marker-alt" style="color: #1B5A9B;"></i> Lat. Juan Gil Preciado 4176<br>Hogares de Nuevo México CP. 45160 Zapopan, Jal.</p>
+            <p><i class="fas fa-phone" style="color: #1B5A9B;"></i> <a href="tel:523314100050">52 33 1410 0050</a></p>
+            <p><i class="fas fa-envelope" style="color: #1B5A9B;"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
+            <a href="https://www.google.com/maps/place/Lat+Juan+Gil+Preciado+4176,+Hogares+de+Nuevo+M%C3%A9xico,+45160+Zapopan,+Jal.,+M%C3%A9xico/@20.6745,-103.4567,17z/data=!3m1!4b1!4m5!3m4!1s0x8428b3f9f9f9f9f9:0x1c9f1c9f1c9f1c9f!8m2!3d20.6745!4d-103.4567" target="_blank" class="ver-mapa" style="color: #1B5A9B;">
+              <i class="fas fa-map-marked-alt" style="color: #1B5A9B;"></i> Ver en mapa
+            </a>
+          </div>
+          <div class="sucursal-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.1234!2d-103.4589!3d20.6745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b3f9f9f9f9f9%3A0x1c9f1c9f1c9f1c9f!2sLat%20Juan%20Gil%20Preciado%204176%2C%20Hogares%20de%20Nuevo%20M%C3%A9xico%2C%2045160%20Zapopan%2C%20Jal.!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;"color="#1B5A9B" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Sucursal Juan Gil Preciado"></iframe>
+          </div>
+        </div>
+        
+        <!-- Sucursal Punto Sur -->
+        <div class="tab-content" id="punto-sur">
+          <div class="sucursal-info">
+            <h3>SUCURSAL PUNTO SUR</h3>
+            <p><i class="fas fa-map-marker-alt" style="color: #1B5A9B;"></i> Av. Camino Real a Colima 150<br>CP. 45602 San Pedro Tlaquepaque</p>
+            <p><i class="fas fa-phone" style="color: #1B5A9B;"></i> <a href="tel:523314100050">52 33 1410 0050</a></p>
+            <p><i class="fas fa-envelope" style="color: #1B5A9B;"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
+            <a href="https://www.google.com/maps/place/Av+Camino+Real+a+Colima+150,+San+Pedro+Tlaquepaque,+Jal.,+M%C3%A9xico/@20.6083,-103.4187,17z/data=!3m1!4b1!4m5!3m4!1s0x8428b3f9f9f9f9f9:0x1c9f1c9f1c9f1c9f!8m2!3d20.6083!4d-103.4187" target="_blank" class="ver-mapa" style="color: #1B5A9B;">
+              <i class="fas fa-map-marked-alt" style="color: #1B5A9B;"></i> Ver en mapa
+            </a>
+          </div>
+          <div class="sucursal-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3735.6789!2d-103.4209!3d20.6083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8428b3f9f9f9f9f9%3A0x1c9f1c9f1c9f1c9f!2sAv%20Camino%20Real%20a%20Colima%20150%2C%20San%20Pedro%20Tlaquepaque%2C%20Jal.%2C%20M%C3%A9xico!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;"color="#1B5A9B" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Sucursal Punto Sur"></iframe>
+          </div>
+        </div>
+        
+        <!-- Sucursal Colima -->
+        <div class="tab-content" id="colima">
+          <div class="sucursal-info">
+            <h3>SUCURSAL COLIMA</h3>
+            <p><i class="fas fa-map-marker-alt" style="color: #1B5A9B;"></i> Blvrd Camino Real 670<br>Residencial Los Olivos El Provenir II<br>CP. 28019 Col, Colima.</p>
+            <p><i class="fas fa-phone" style="color: #1B5A9B;"></i> <a href="tel:523314100050">52 33 1410 0050</a></p>
+            <p><i class="fas fa-envelope" style="color: #1B5A9B;"></i> <a href="mailto:ventas@lesamx.com">ventas@lesamx.com</a></p>
+            <a href="https://www.google.com/maps/place/Blvd+Camino+Real+670,+Residencial+Los+Olivos,+28019+Colima,+Col.,+M%C3%A9xico/@19.2678,-103.7229,17z/data=!3m1!4b1!4m5!3m4!1s0x84255e9f9f9f9f9f:0x1c9f1c9f1c9f1c9f!8m2!3d19.2678!4d-103.7229" target="_blank" class="ver-mapa" style="color: #1B5A9B;">
+              <i class="fas fa-map-marked-alt" style="color: #1B5A9B;"></i> Ver en mapa
+            </a>
+          </div>
+          <div class="sucursal-mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3766.7890!2d-103.7251!3d19.2678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84255e9f9f9f9f9f%3A0x1c9f1c9f1c9f1c9f!2sBlvd%20Camino%20Real%20670%2C%20Residencial%20Los%20Olivos%2C%2028019%20Colima%2C%20Col.!5e0!3m2!1sen!2smx!4v1620000000000" width="100%" height="100%" style="border:0;"color="#8AD949" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Sucursal Colima"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="sucursales-note">
+      <p><i class="fas fa-truck"></i> Realizamos envíos a toda la república mexicana</p>
+    </div>
+  </section>
+  
+  <style>
+    /* Estilos para la sección de sucursales */
+    .sucursales {
+      padding: 3rem 5%;
+      background-color: #ffffff;
+    }
+  
+    .sucursales h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 1rem;
+      font-size: 2.2rem;
+    }
+  
+    .sucursales-subtitle {
+      text-align: center;
+      color: #A4A5A5;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+  
+    .sucursales-container {
+      background: #FFFFFF;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+    }
+  
+    .sucursales-tabs {
+      display: flex;
+      overflow-x: auto;
+      background: #FFFFFF;
+      padding: 0.5rem;
+      gap: 0.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: #ffffff #FFFFFF;
+    }
+  
+    .sucursales-tabs::-webkit-scrollbar {
+      height: 6px;
+    }
+  
+    .sucursales-tabs::-webkit-scrollbar-thumb {
+      background-color: #FFFFFF;
+      border-radius: 3px;
+    }
+  
+    .tab-btn {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      background:FFFFFF;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #909090;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  
+    .tab-btn:hover {
+      background: #FFFFFF;
+    }
+  
+    .tab-btn.active {
+      background: #FFFFFF;
+      color:#1B5A9B;
+      box-shadow: 0 4px 8px #1B5A9B;
+    }
+  
+    .sucursales-content {
+      position: relative;
+      min-height: 400px;
+    }
+  
+    .tab-content {
+      display: none;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 2rem;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease;
+    }
+  
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  
+    .tab-content.active {
+      display: grid;
+    }
+  
+    .sucursal-info {
+      padding: 1rem;
+    }
+  
+    .sucursal-info h3 {
+      color: #222;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+  
+    .sucursal-info h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: #E0F5F0;
+    }
+  
+    .sucursal-info p {
+      margin: 1rem 0;
+      color: #555;
+      line-height: 1.6;
+    }
+  
+    .sucursal-info i {
+      color: #E0F5F0;
+      width: 20px;
+      margin-right: 10px;
+    }
+  
+    .sucursal-info a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+  
+    .sucursal-info a:hover {
+      color: #000000;
+    }
+  
+    .ver-mapa {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      background: #E0F5F0;
+      color: black !important;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none !important;
+    }
+  
+    .ver-mapa:hover {
+      background: #E0F5F0;
+      color:#1B5A9B !important;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(30,190,93,0.3);
+    }
+  
+    .ver-mapa i {
+      margin-right: 8px;
+      transition: all 0.3s ease;
+    }
+  
+    .ver-mapa:hover i {
+      color:#1B5A9B !important;
+    }
+  
+    .sucursal-mapa {
+      height: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+  
+    .sucursales-note {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #FFFFFF;
+      border-radius: 12px;
+      color: BLACK;
+      font-weight: 500;
+    }
+  
+    .sucursales-note i {
+      margin-right: 8px;
+      color: #E0F5F0;
+    }
+
+  
+    /* Ajustes responsivos para la sección de sucursales */
+    @media (max-width: 992px) {
+      .tab-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .sucursal-mapa {
+        height: 300px;
+        margin-top: 1.5rem;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .sucursales {
+        padding: 2rem 4%;
+      }
+      
+      .sucursales h2 {
+        font-size: 1.8rem;
+      }
+      
+      .tab-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+  
+    @media (max-width: 480px) {
+      .sucursales {
+        padding: 1.5rem 3%;
+      }
+      
+      .sucursales h2 {
+        font-size: 1.6rem;
+      }
+      
+      .tab-content {
+        padding: 1rem;
+      }
+      
+      .sucursal-info h3 {
+        font-size: 1.2rem;
+      }
+      
+      .ver-mapa {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+  
+  <script>
+  // Funcionalidad de pestañas para sucursales
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    // Mostrar la primera pestaña por defecto
+    if (tabContents.length > 0) {
+      tabContents[0].classList.add('active');
+    }
+    
+    // Manejar clic en las pestañas
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        
+        // Remover clase active de todos los botones y contenidos
+        tabButtons.forEach(btn => {
+          btn.style.backgroundColor = '#1B5A9B';
+          btn.style.color = '#1a1a1a';
+          btn.style.border = '1px solid #1B5A9B';
+        });
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // Agregar estilos al botón activo
+        button.style.backgroundColor = '#1B5A9B';
+        button.style.color = 'white';
+        button.style.border = '1px solid #1B5A9B';
+        
+        // Mostrar el contenido correspondiente
+        document.getElementById(tabId).classList.add('active');
+        
+        // Hacer scroll suave hacia la sección de sucursales
+        document.querySelector('.sucursales').scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+  });
+  </script>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- 6ta seccion    footer -->
+    <footer class="footer">
+  <div class="footer-container">
+    
+    <div class="footer-top">
+      <div class="footer-logo">
+        <img src="images/Logos/logo-rojo.webp" alt="Todo en Aislamientos" class="logo-img">
+        <p class="footer-tagline">Soluciones en aislamiento térmico y acústico</p>
+      </div>
+
+      <div class="footer-info">
+        <div class="footer-section">
+          <h4>Contacto</h4>
+          <p><i class="fas fa-phone"></i> <a href="tel:523314100050">33 1410 0050</a></p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@todoenaislamientos.com">ventas@todoenaislamientos.com</a></p>
+        </div>
+
+        <div class="footer-section">
+          <h4>Sucursales</h4>
+          <p>Jalisco y Colima</p>
+          <p>Entregas a toda la República</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <a class="btn-action btn-call" href="tel:523314100050"><i class="fas fa-phone"></i> Llamar</a>
+      <a class="btn-action btn-wa" href="https://wa.me/523314100050" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Todo En Aislamientos — Todos los derechos reservados.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/kr18mx" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/523314100050" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/kr18mx" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+/* === Footer Base === */
+.footer {
+  background: #1B5A9B;
+  color: #ffffff;
+  font-family: "Inter", Arial, sans-serif;
+  padding: 3rem 1.5rem 2rem;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #E83C39, #1B5A9B);
+}
+
+/* === Layout === */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-logo {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-logo .logo-img {
+  height: 80px;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.footer-tagline {
+  color: #dcdcdc;
+  font-size: 0.95rem;
+  font-weight: 300;
+}
+
+/* === Información === */
+.footer-info {
+  display: flex;
+  flex: 2;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-section h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.footer-section h4::after {
+  content: "";
+  position: absolute;
+  bottom: -0.3rem;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.footer-section p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-section i {
+  width: 18px;
+  opacity: 0.8;
+  color: #E83C39;
+}
+
+.footer-section a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+  color: #E83C39;
+}
+
+/* === Acciones rápidas === */
+.footer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.btn-call { background: #E83C39; }
+.btn-wa { background: #25D366; }
+
+.btn-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+/* === Footer Bottom === */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: #dcdcdc;
+  margin: 0;
+}
+
+/* === Redes Sociales === */
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  background: #E83C39;
+  transform: translateY(-2px);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footer-section h4::after {
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
